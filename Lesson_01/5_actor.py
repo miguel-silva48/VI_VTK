@@ -57,7 +57,7 @@ def main(shape_type):
     #shape_actor.GetProperty().SetRepresentationToSurface() # Surfaces - the figure is shown as a solid (default)
 
     # Transparency - 0.0 is completely transparent and 1.0 is completely opaque
-    #shape_actor.GetProperty().SetOpacity(0.0) # 0.5 is translucid
+    shape_actor.GetProperty().SetOpacity(0.5) # 0.5 is translucid
 
     ren = vtkRenderer()
     ren.AddActor(shape_actor)
