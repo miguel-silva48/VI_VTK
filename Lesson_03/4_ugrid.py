@@ -5,32 +5,36 @@
 # Import all VTK modules
 from vtkmodules.all import *
 
+
 def main():
 
     # tetra
-    coords = [[0,0,0], [1,0,0], [0.5,1,0], [0.5,0.5,1]]
-    aTetra = [0,1,2,3]
-    
+    coords = [[0, 0, 0], [1, 0, 0], [0.5, 1, 0], [0.5, 0.5, 1]]
+    aTetra = [0, 1, 2, 3]
+
     #################################
-	# VTKUnstructuredGrid Definition
+    # VTKUnstructuredGrid Definition
     Ugrid = vtkUnstructuredGrid()
     points = vtkPoints()
-    
-    # Vertex  
+
+    # Vertex
     for i in range(len(coords)):
-        points.InsertPoint(i,coords[i])
-    
+        points.InsertPoint(i, coords[i])
+
     # Cell
-    Ugrid.InsertNextCell(VTK_TETRA,4,aTetra)
-    
+    Ugrid.InsertNextCell(VTK_VERTEX, 4, aTetra)
+
     Ugrid.SetPoints(points)
-    
+
     # Mapper and actor
     UGriMapper = vtkDataSetMapper()
     UGriMapper.SetInputData(Ugrid)
 
     UgridActor = vtkActor()
     UgridActor.SetMapper(UGriMapper)
+
+    UgridActor.GetProperty().SetColor(1, 0, 0)
+    UgridActor.GetProperty().SetPointSize(5)
 
     # Creation of renderer, render window, and interactor.
     ren1 = vtkRenderer()
@@ -41,13 +45,14 @@ def main():
     iren.SetRenderWindow(renWin)
 
     ren1.AddActor(UgridActor)
-    ren1.SetBackground(1.0, 0.55, 0.41) 
+    ren1.SetBackground(1.0, 0.55, 0.41)
 
-	# render
+    # render
     renWin.Render()
 
-	# Start of interaction
+    # Start of interaction
     iren.Start()
+
 
 if __name__ == '__main__':
     main()

@@ -3,7 +3,7 @@ from vtkmodules.all import *
 # Create the sphere
 sphereSource = vtkSphereSource()
 sphereSource.SetRadius(1.0)
-sphereSource.SetThetaResolution(28)  # Sets the number of cones around the longitudinal axis (y-axis)
+sphereSource.SetThetaResolution(8)  # Sets the number of cones around the longitudinal axis (y-axis)
 sphereSource.SetPhiResolution(8)    # Sets the number of cones around the latitudinal axis (x-axis)
 sphereSource.Update()
 
